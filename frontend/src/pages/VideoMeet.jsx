@@ -11,7 +11,9 @@ import MicOffIcon from '@mui/icons-material/MicOff'
 import ScreenShareIcon from '@mui/icons-material/ScreenShare';
 import StopScreenShareIcon from '@mui/icons-material/StopScreenShare'
 import ChatIcon from '@mui/icons-material/Chat'
+
 //import server from '../environment';
+const apiKey = import.meta.env.SERVER;
 
 
 var connections = {};
@@ -268,7 +270,7 @@ export default function VideoMeetComponent() {
 
 
     let connectToSocketServer = () => {
-        socketRef.current = io.connect("http://localhost:8000", { secure: false })
+        socketRef.current = io.connect(apiKey, { secure: false })
 
         socketRef.current.on('signal', gotMessageFromServer)
 
